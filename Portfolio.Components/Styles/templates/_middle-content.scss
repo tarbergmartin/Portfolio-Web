@@ -1,0 +1,42 @@
+﻿$block: ".middle";
+
+#{$block} {
+    @extend %flex-container;
+    @extend %content-padding;
+    @include flex-direction(column);
+    
+}
+
+#{$block}__title {
+    @extend %heading-large;
+}
+
+#{$block}__content {
+    @include flexbox;
+    @include flex-wrap(wrap);
+    width: 100%;
+}
+
+#{$block}__content-left, #{$block}__content-right {
+    width: 50%;
+}
+
+#{$block}__content-left {
+    padding: 0 1rem 0 0;
+}
+
+#{$block}__content-right {
+    padding: 0 0 0 1rem;
+}
+
+@media only screen and (max-width: $breakpoint-md) {
+
+    #{$block}__content-left, #{$block}__content-right {
+        padding: 0;
+        width: 100%;
+    }
+
+    #{$block}__content-left {
+        padding-bottom: 2.5rem;
+    }
+}

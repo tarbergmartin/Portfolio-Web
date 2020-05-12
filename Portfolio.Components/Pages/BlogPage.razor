@@ -1,0 +1,64 @@
+﻿@using Portfolio.Shared.PageModels
+@page "/blog/{Id:int}"
+
+@if (Model != null)
+{
+    <PageHeader Links="Links" />
+    <Hero Id="Model.HeroId" />
+
+    <main class="blog-content">
+
+        @if (IsPublished)
+        {
+            @if (!string.IsNullOrEmpty(Model.PageName))
+            {
+                <h1 class="blog-content__title">@Model.PageName</h1>
+            }
+
+            <h3 class="blog-content__date">@Model.PublishedDate.ToShortDateString()</h3>
+
+            @if (!string.IsNullOrEmpty(Model.HtmlText))
+            {
+                <div class="blog-content__text">
+                    @((MarkupString)Model.HtmlText)
+                </div>
+            }
+        }
+
+        else
+        {
+            <div class="blog-content__unpublished">
+                <p>This article will be published on @Model.PublishedDate.ToShortDateString()</p>
+            </div>
+        }
+
+    </main>
+
+    <footer class="footer footer--blog-page"></footer>
+}
+
+else if (NoPageFound)
+{
+    <Page404 />
+}
+
+else
+{
+    <PagePreloader />
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private BlogPageModel Model { get; set; }
+    private bool NoPageFound { get; set; } = false;
+    private bool IsPublished => Model.PublishedDate <= DateTime.Now;
+    private List<Link> Links = new List<Link> { new Link { Name = "Home", Reference = "/" } };
+
+    protected async override Task OnParametersSetAsync()
+    {
+        Model = await SharePointService.GetBlogPageByIdAsync(Id);
+        NoPageFound = Model == null ? true : false;
+    }
+}

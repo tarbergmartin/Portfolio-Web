@@ -1,0 +1,35 @@
+﻿@using Portfolio.Shared.ComponentModels
+
+@if (Model != null)
+{
+    <div class="about-me" id="@Model.ComponentId">
+
+        @if (!string.IsNullOrEmpty(Model.Image))
+        {
+            <img class="about-me__image" src="@Model.Image" />
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Title))
+        {
+            <h2 class="about-me__header">@Model.Title</h2>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.HtmlText))
+        {
+            <div class="about-me__information">
+                @((MarkupString)Model.HtmlText)
+            </div>
+        }
+
+    </div>
+}
+
+else
+{
+    <p>Loading...</p>
+}
+
+@code {
+    [Parameter]
+    public AboutModel Model { get; set; }
+}

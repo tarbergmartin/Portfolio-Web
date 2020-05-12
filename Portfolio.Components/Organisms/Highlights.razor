@@ -1,0 +1,40 @@
+﻿
+@if (Model != null)
+{
+
+    <ul class="highlights" id="@Model.ComponentId">
+
+        @foreach (var highlight in Model.Highlights)
+        {
+            <li class="highlight__item">
+
+                @if (!string.IsNullOrEmpty(highlight.Image))
+                {
+                    <div class="highlight__logo">
+                        <img class="highlight__icon" src="@highlight.Image" />
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(highlight.Title))
+                {
+                    <h4 class="highlight__title">@highlight.Title</h4>
+                }
+
+                @if (!string.IsNullOrEmpty(highlight.HtmlText))
+                {
+                    <div class="highlight__text">
+                        @((MarkupString)highlight.HtmlText)
+                    </div>
+                }
+
+
+            </li>
+        }
+    </ul>
+}
+
+
+@code {
+    [Parameter]
+    public HighlightsModel Model { get; set; }
+}

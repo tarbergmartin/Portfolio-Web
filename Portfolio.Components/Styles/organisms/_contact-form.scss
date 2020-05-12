@@ -1,0 +1,102 @@
+﻿.contact-form {
+    @include flexbox;
+    @include flex-direction(column);
+    margin: auto;
+    max-width: 100%;
+    width: 500px;
+}
+
+.contact-form__input, .contact-form__textarea {
+    font-family: 'Oswald', sans-serif;
+    border: solid 1px #aaa;
+    margin-top: 0.5rem;
+    outline: none;
+    padding: 0.8rem;
+}
+
+.contact-form__textarea {
+    height: 150px;
+    resize: none;
+}
+
+.contact-form-information {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.contact-form__input, .contact-form__textarea {
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.contact-form .validation-message {
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+}
+
+.contact-form__submit {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin: auto;
+    margin-top: 1rem;
+    outline: none;
+    padding: 8px 13px;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+    width: 100px;
+}
+
+.contact-form-failure, .contact-form-success {
+    text-align: center;
+}
+
+.footer {
+
+    .contact-form-information {
+        color: lightskyblue;
+    }
+
+    .contact-form .validation-message {
+        color: white;
+    }
+
+    .contact-form__submit {
+        color: black;
+        background-color: white;
+    }
+
+    .contact-form__submit:hover {
+        color: white;
+        background-color: darkslategray;
+    }
+
+    .contact-form-failure, .contact-form-success {
+        color: white;
+    }
+}
+
+.top, .middle {
+
+    .contact-form-information {
+        color: darkslateblue;
+    }
+
+    .contact-form .validation-message {
+        color: black;
+    }
+
+    .contact-form__submit {
+        color: white;
+        background-color: darkslategray;
+    }
+
+    .contact-form__submit:hover {
+   
+        background-color: lightslategrey;
+    }
+}

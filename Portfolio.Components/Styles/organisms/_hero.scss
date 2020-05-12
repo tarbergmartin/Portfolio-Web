@@ -1,0 +1,26 @@
+﻿.hero {
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(center);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 400px;
+    /*padding-top: 4rem;*/
+    width: 100%;
+}
+
+.hero__content {
+    @extend %flex-container;
+    @include justify-content(center);
+    color: white;
+    font-size: 2rem;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 2px;
+    max-width: 450px;
+    text-align: center;
+
+    p {
+        margin: 0.2rem 0;
+    }
+}

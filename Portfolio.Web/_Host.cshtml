@@ -1,0 +1,25 @@
+﻿@page "/"
+@namespace Portfolio.Components
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Web Portfolio</title>
+    <base href="~/" />
+    <link href="_content/Portfolio.Components/css/style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <app>
+        @(await Html.RenderComponentAsync<App>(RenderMode.Server))
+    </app>
+
+    <script src="_framework/blazor.server.js"></script>
+    <script src="_content/Portfolio.Components/js/index.js"></script>
+</body>
+</html> 

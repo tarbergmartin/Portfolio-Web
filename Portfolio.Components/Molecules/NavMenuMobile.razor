@@ -1,0 +1,58 @@
+﻿@inject IJSRuntime JSRuntime
+
+@if (Links.Any())
+{
+    <div class="nav-menu-mobile @OverlayClass">
+
+        <a href="/">
+            <img class="nav-menu-mobile__me" src="_content/Portfolio.Components/img/me.jpg" />
+        </a>
+
+        <nav class="nav-menu-mobile__nav">
+            <ul class="nav-menu-mobile__list">
+                @foreach (var link in Links)
+                {
+                    <li class="nav-menu-mobile__item">
+
+                        @if (link.FragmentRoute)
+                        {
+                            <NavLink class="nav-menu-mobile__link" @onclick="() => HandleClick(link.Reference)">
+                                @link.Name
+                            </NavLink>
+                        }
+
+                        else
+                        {
+                            <NavLink class="nav-menu-mobile__link" href="@link.Reference">
+                                @link.Name
+                            </NavLink>
+                        }
+
+                    </li>
+                }
+            </ul>
+        </nav>
+
+        <a href="https://github.com/tarbergmartin">
+            <img class="nav-menu-mobile__github" src="_content/Portfolio.Components/img/github.svg" />
+        </a>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public EventCallback<bool> OnFragmentRouteLinkClick { get; set; }
+
+    [Parameter]
+    public List<Link> Links { get; set; }
+
+    [Parameter]
+    public bool IsVisible { get; set; }
+    private string OverlayClass => IsVisible ? "nav-menu-mobile--open" : "nav-menu-mobile--closed";
+
+    private async Task HandleClick(string id)
+    {
+        await OnFragmentRouteLinkClick.InvokeAsync(false);
+        await JSRuntime.InvokeVoidAsync("blazorHelpers.scrollToFragment", id);
+    }
+}

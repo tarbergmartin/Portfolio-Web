@@ -1,0 +1,10 @@
+﻿.bottom {
+    @extend %flex-container;
+    @extend %content-padding;
+    @include flex-direction(column);
+}
+
+.bottom__title {
+    @extend %heading-large;
+    text-align: center;
+}

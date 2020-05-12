@@ -1,0 +1,39 @@
+﻿
+@if (Model != null && Model.Projects.Any())
+{
+    <ul class="projects" id="@Model.ComponentId">
+
+        @foreach (var project in Model.Projects)
+        {
+            <li class="project__item" style="background-image: url('@project.Image')">
+
+                <div class="project__overlay">
+
+                    @if (!string.IsNullOrEmpty(project.Title))
+                    {
+                        <h4 class="project__title">@project.Title</h4>
+                    }
+
+                    @if (!string.IsNullOrEmpty(project.Title))
+                    {
+                        <h5 class="project__technology">@project.Technology</h5>
+                    }
+
+                    @if (!string.IsNullOrEmpty(project.Link) && !string.IsNullOrEmpty(project.LinkText))
+                    {
+                        <a class="button button--green" href="@project.Link" target="_blank">@project.LinkText</a>
+                    }
+
+                </div>
+ 
+            </li>
+        }
+
+    </ul>
+}
+
+
+@code {
+    [Parameter]
+    public ProjectsModel Model { get; set; }
+}

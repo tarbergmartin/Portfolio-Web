@@ -1,0 +1,42 @@
+﻿@inject IJSRuntime JSRuntime;
+
+@if (Links.Any())
+{
+    <nav class="nav-menu">
+
+        <ul class="nav-menu__list">
+
+            @foreach (var link in Links)
+            {
+                <li class="nav-menu__item">
+
+                    @if (link.FragmentRoute)
+                    {
+                        <NavLink class="nav-menu__link" @onclick="() => HandleClick(link.Reference)">
+                            @link.Name
+                        </NavLink>
+                    }
+
+                    else
+                    {
+                        <NavLink class="nav-menu__link" href="@link.Reference">
+                            @link.Name
+                        </NavLink>
+                    }
+
+                </li>
+
+            }
+        </ul>
+    </nav>
+}
+
+@code {
+    [Parameter]
+    public List<Link> Links { get; set; }
+
+    private async Task HandleClick(string id)
+    {
+        await JSRuntime.InvokeVoidAsync("blazorHelpers.scrollToFragment", id);
+    }
+}

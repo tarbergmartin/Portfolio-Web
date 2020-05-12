@@ -1,0 +1,46 @@
+﻿@using Portfolio.Shared.Interfaces
+
+@if (Model != null)
+{
+    switch (Model)
+    {
+        case AboutModel model:
+            <AboutMe Model="model" />
+            break;
+        case ContactModel model:
+            <ContactMe Model="model" />
+            break;
+        case HighlightsModel model:
+            <Highlights Model="model" />
+            break;
+        case ProjectsModel model:
+            <Projects Model="model" />
+            break;
+        case SkillsModel model:
+            <Skills Model="model" />
+            break;
+        default:
+            <p>No match for flexible component</p>
+            break;
+    }
+}
+
+else
+{
+    <ComponentPreLoader />
+}
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    private IComponentModel Model { get; set; }
+
+    protected async override Task OnParametersSetAsync()
+    {
+        Model = await SharePointService.GetFlexibleModelByIdAsync(Id);
+    }
+}
+
+

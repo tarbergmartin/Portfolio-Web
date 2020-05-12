@@ -1,0 +1,28 @@
+﻿@if (Model != null && Model.Skills.Any())
+{
+    <ul class="skills" id="@Model.ComponentId">
+       @foreach (var skill in Model.Skills)
+       {
+           <li class="skill-item">
+
+               <div class="skill-item__skill">
+                   @skill.Name
+               </div>
+
+               <div class="skill-item__bar">
+                   <div class="skill-item__progress" style="width: @skill.LevelAsPercentageString"></div>
+               </div>
+
+               <div class="skill-item__percentage">
+                  @skill.LevelAsPercentageString
+               </div>
+
+           </li>
+       }
+    </ul>
+}
+
+@code {
+    [Parameter]
+    public SkillsModel Model { get; set; }
+}

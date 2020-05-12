@@ -1,0 +1,49 @@
+﻿@inject IJSRuntime JSRuntime
+
+<header id="page-header" class="page-header">
+
+    <div class="page-header__container">
+
+        <a class="nav-logo" href="/">
+            <img class="nav-logo__img" src="_content/Portfolio.Components/img/me.jpg" />
+        </a>
+
+        @if (Links.Any())
+        {
+            <NavMenu Links="Links" />
+            <NavMenuMobile Links="Links" IsVisible="IsMobileMenuOpen" OnFragmentRouteLinkClick="OnFragmentRouteLinkClick" />
+            <HamburgerMenu IsOpen="IsMobileMenuOpen" OnClick="OnHamburgerMenuClick" />
+        }
+
+    </div>
+
+</header>
+
+@code {
+
+    [Parameter]
+    public List<Link> Links { get; set; }
+
+    private bool IsMobileMenuOpen { get; set; } = false;
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            await JSRuntime.InvokeVoidAsync("blazorHelpers.initScrollableHeader");
+
+        if (IsMobileMenuOpen)
+            await JSRuntime.InvokeVoidAsync("blazorHelpers.lockBodyScroll");
+        else
+            await JSRuntime.InvokeVoidAsync("blazorHelpers.unlockBodyScroll");
+    }
+
+    private void OnHamburgerMenuClick(bool isOpen)
+    {
+        IsMobileMenuOpen = isOpen;
+    }
+
+    private void OnFragmentRouteLinkClick(bool isMobileMenuOpen)
+    {
+        IsMobileMenuOpen = isMobileMenuOpen;
+    }
+}

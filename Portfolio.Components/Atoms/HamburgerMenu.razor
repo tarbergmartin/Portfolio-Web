@@ -1,0 +1,19 @@
+﻿
+<div class="hamburger-menu">
+    <div class="hamburger @HamburgerClass" @onclick="HandleClick"></div>
+</div>
+
+@code {
+
+    [Parameter]
+    public EventCallback<bool> OnClick { get; set; }
+
+    [Parameter]
+    public bool IsOpen { get; set; }
+    private string HamburgerClass => IsOpen ? "hamburger--open" : "";
+
+    private void HandleClick()
+    {
+        OnClick.InvokeAsync(!IsOpen);
+    }
+}

@@ -1,0 +1,47 @@
+﻿
+@if (Model != null)
+{
+    <div class="blog-module">
+
+        <h3 class="blog-module__title">Blog</h3>
+
+        @if (Model.BlogPosts.Any())
+        {
+            <ul class="blog-module__posts">
+
+                @foreach (var post in Model.BlogPosts)
+                {
+                    <li class="blog-post">
+                        <a class="blog-post__link" href="@($"/blog/{post.BlogPageId}")">
+                            <div class="blog-post__image" style="background-image: url('@post.Image')" />
+                            <h4 class="blog-post__title">@post.Title</h4>
+                        </a>
+                        <p class="blog-post__date">@post.PublishedDate.ToShortDateString()</p>
+                        <p class="blog-post__teaser">@post.Teaser</p>
+
+                    </li>
+                }
+
+            </ul>
+        }
+
+    </div>
+}
+
+else
+{
+    <ComponentPreLoader />
+}
+
+
+@code {
+    [Parameter]
+    public int Take { get; set; } = 4;
+
+    private BlogModel Model { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        Model = await SharePointService.GetBlogModelAsync(takePosts: Take);
+    }
+}

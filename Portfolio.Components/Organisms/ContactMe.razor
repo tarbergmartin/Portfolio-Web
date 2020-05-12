@@ -1,0 +1,81 @@
+﻿@inject EmailService EmailService
+
+@if (!FormSubmitted)
+{
+    if (!MailError)
+    {
+        if (Model != null)
+        {
+            <div class="contact-form-information">
+                @((MarkupString)Model.HtmlText)
+            </div>
+        }
+
+        <EditForm class="contact-form" Model="_submissionModel" OnValidSubmit="HandleValidSubmit" id="@Model.ComponentId">
+
+            <DataAnnotationsValidator />
+
+            <InputText class="contact-form__input"
+                       placeholder="Name"
+                       @bind-Value="_submissionModel.Name" />
+            <ValidationMessage For="(() =>_submissionModel.Name)" />
+
+            <InputText class="contact-form__input"
+                       placeholder="Email"
+                       type="email"
+                       @bind-Value="_submissionModel.Email" />
+            <ValidationMessage For="(() => _submissionModel.Email)" />
+
+            <InputTextArea class="contact-form__textarea"
+                           placeholder="Message"
+                           @bind-Value="_submissionModel.Message"
+                           maxlength="@ViewHelpers.GetMaxLengthForSubmissionModelProperty("Message")" />
+            <ValidationMessage For="(() => _submissionModel.Message)" />
+
+            <input class="contact-form__submit" type="submit" value="Submit">
+
+        </EditForm>
+    }
+
+    else
+    {
+        <div class="contact-form-failure">
+            <p>Something went wrong while trying to submit the form. Please refresh the page and try again.</p>
+        </div>
+    }
+}
+
+else
+{
+    <div class="contact-form-success">
+        <p>Thank you! I will get back to you as soon as I can!</p>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public ContactModel Model { get; set; }
+
+    private SubmissionModel _submissionModel = new SubmissionModel();
+    private bool FormSubmitted { get; set; } = false;
+    private bool MailError { get; set; } = false;
+
+    private async Task HandleValidSubmit()
+    {
+        if (Model != null)
+        {
+            _submissionModel.Recipient = Model.SendMailTo;
+            var success = await EmailService.SendEmailAsync(_submissionModel);
+
+            if (success)
+                FormSubmitted = true;
+            else
+                MailError = true;
+        }
+
+        else
+        {
+            MailError = true;
+        }
+    }
+}

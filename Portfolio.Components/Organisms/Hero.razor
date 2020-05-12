@@ -1,0 +1,27 @@
+﻿
+@if (Model != null)
+{
+    <div class="hero" style="background-image: url('@Model.Image')">
+        <div class="hero__content">
+            @((MarkupString)Model.HtmlText)
+        </div>
+    </div>
+}
+
+else
+{
+    <HeroPreloader PixelHeight="400" />
+}
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    private HeroModel Model { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        Model = await SharePointService.GetHeroModelByIdAsync(Id);
+    }
+}

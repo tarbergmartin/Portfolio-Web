@@ -1,0 +1,24 @@
+﻿.nav-menu {
+
+    &__list {
+        @include flexbox;
+        @include flex-wrap(wrap);
+        @include justify-content(flex-end);
+    }
+
+    &__item:not(:last-of-type) {
+        margin-right: 2rem;
+    }
+
+    &__link {
+        cursor: pointer;
+        color: white;
+    }
+}
+
+@media only screen and (max-width: $breakpoint-sm) {
+    .nav-menu {
+        display: none;
+    }
+}
+

@@ -1,0 +1,32 @@
+﻿.page-header {
+    padding: 1rem 0;
+    position: fixed;
+    transition: all .5s ease-in-out;
+    width: 100%;
+    z-index: 30;
+}
+
+.page-header--unpinned {
+    margin-top: -200px;
+}
+
+.page-header--pinned {
+    margin-top: 0;
+}
+
+.page-header--colored {
+    background-color: rgba(37, 41, 52, 0.5);
+}
+
+.page-header__container {
+    @extend %flex-container;
+    @include justify-content(space-between);
+}
+
+.nav-logo__img {
+    @include flexbox;
+    border-radius: 50%;
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    cursor: pointer;
+    width: 45px;
+}

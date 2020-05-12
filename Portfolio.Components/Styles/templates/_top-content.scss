@@ -1,0 +1,10 @@
+﻿.top {
+    @extend %flex-container;
+    @extend %content-padding;
+    @include flex-direction(column);
+
+}
+
+.top__title {
+    @extend %heading-large;
+}

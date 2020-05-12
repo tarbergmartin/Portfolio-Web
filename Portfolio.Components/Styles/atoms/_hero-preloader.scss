@@ -1,0 +1,14 @@
+﻿.image-preloader {
+    animation: flickeringBackground 4s infinite;
+    width: 100%;
+}
+
+@keyframes flickeringBackground {
+    0% {
+        background-color: #C0C0C0;
+    }
+
+    100% {
+        background-color: white;
+    }
+}

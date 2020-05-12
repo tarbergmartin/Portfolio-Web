@@ -1,0 +1,60 @@
+﻿.projects {
+    display: grid;
+    width: 100%;
+    grid-gap: 1.3rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    color: white;
+    width: 100%;
+}
+
+.project__item {
+    background-size: cover;
+    background-position: center;
+    min-height: 200px;
+    padding: 0;
+    position: relative;
+    text-align: center;
+}
+
+.project__overlay {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+    @include flex-direction(column);
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    padding: 4rem 1rem;
+    position: absolute;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+}
+
+.project__overlay:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.project__title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1;
+    margin: 0;
+    padding-bottom: 0.4rem;
+}
+
+.project__technology {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+@media only screen and (max-width: $breakpoint-xl) {
+    .projects {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: $breakpoint-sm) {
+    .projects {
+        grid-template-columns: 1fr;
+    }
+}

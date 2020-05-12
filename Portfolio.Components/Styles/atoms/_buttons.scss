@@ -1,0 +1,19 @@
+﻿.button {
+    border-radius: 20px;
+    padding: 8px 13px;
+    color: white;
+    margin-top: 0.8rem;
+    font-size: 0.8rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    transition: all 0.2s ease-in-out;
+}
+
+.button--green {
+    background-color: #26A532;
+
+    &:hover {
+        background-color: #41BD4E;
+    }
+}
+
+

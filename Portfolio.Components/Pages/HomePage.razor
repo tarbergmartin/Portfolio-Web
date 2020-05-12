@@ -1,0 +1,101 @@
+﻿@page "/"
+@using Portfolio.Shared.PageModels
+
+@if (Model != null)
+{
+    <PageHeader Links="Model.Links" />
+    <Hero Id="Model.HeroId" />
+
+    <main>
+        <div class="top">
+
+            @if (!string.IsNullOrEmpty(Model.TopContentTitle))
+            {
+                <h2 class="top__title">@Model.TopContentTitle</h2>
+            }
+
+            @if (Model.TopContent != null)
+            {
+                <FlexibleComponent Id="@Model.TopContent.FlexId" />
+            }
+
+        </div>
+
+        <div class="middle">
+
+            @if (!string.IsNullOrEmpty(Model.MiddleContentTitle))
+            {
+                <h2 class="middle__title">@Model.MiddleContentTitle</h2>
+            }
+
+            <div class="middle__content">
+
+                @if (Model.MiddleContentLeft != null)
+                {
+                    <div class="middle__content-left">
+                        <FlexibleComponent Id="@Model.MiddleContentLeft.FlexId" />
+                    </div>
+                }
+
+                @if (Model.MiddleContentRight != null)
+                {
+                    <div class="middle__content-right">
+                        <FlexibleComponent Id="Model.MiddleContentRight.FlexId" />
+                    </div>
+                }
+            </div>
+
+        </div>
+
+        <div class="bottom">
+
+            @if (!string.IsNullOrEmpty(Model.BottomContentTitle))
+            {
+                <h2 class="bottom__title">@Model.BottomContentTitle</h2>
+            }
+
+            @if (Model.BottomContent != null)
+            {
+                <FlexibleComponent Id="Model.BottomContent.FlexId" />
+            }
+
+        </div>
+
+        @if (Model.ShowBlogPosts)
+        {
+            <BlogModule Take="4" />
+        }
+
+    </main>
+
+    <footer class="footer">
+
+        @if (!string.IsNullOrEmpty(Model.FooterContentTitle))
+        {
+            <h2 class="footer__title">@Model.FooterContentTitle</h2>
+        }
+
+        @if (Model.FooterTopContent != null)
+        {
+            <div class="footer__content">
+                <FlexibleComponent Id="Model.FooterTopContent.FlexId" />
+            </div>
+        }
+
+    </footer>
+}
+
+else
+{
+    <PagePreloader />
+}
+
+@code {
+    private HomePageModel Model { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Model = await SharePointService.GetHomePageAsync();
+    }
+}
+

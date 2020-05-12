@@ -1,0 +1,13 @@
+﻿@page "/404"
+
+<PageHeader Links="Links" />
+
+<div class="hero" style="background-image: url('_content/Portfolio.Components/img/404.png')">
+    <div class="hero__content">
+       <h1>Sorry, there's no content here</h1>
+    </div>
+</div>
+
+@code {
+    private List<Link> Links = new List<Link> { new Link { Name = "Home", Reference = "/" } };
+}

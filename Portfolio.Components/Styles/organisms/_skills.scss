@@ -1,0 +1,45 @@
+﻿.skills {
+    width: 100%;
+}
+
+.skill-item {
+    @include flexbox;
+    background-color: #eee;
+    min-height: 2rem;
+    width: 100%;
+}
+
+.skill-item:not(:last-of-type) {
+    margin-bottom: 1rem;
+}
+
+.skill-item__skill, .skill-item__percentage {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+}
+
+.skill-item__skill {
+    width: 79px;
+    padding: 0.5rem;
+    text-align: center
+}
+
+.skill-item__percentage {
+    width: 45px;
+}
+
+.skill-item__bar {
+    @include flex(1);
+}
+
+.skill-item__progress {
+    background-color: orange;
+    height: 100%;
+}
+
+@media only screen and (max-width: $breakpoint-sm) {
+    .skill-item__percentage {
+        display: none;
+    }
+}
