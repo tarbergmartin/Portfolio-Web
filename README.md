@@ -14,6 +14,6 @@ Here is a sample from the mobile view:
 
 Here is an overview of what the different project types are responsible for:
 
-![Screenshot](overview.png)
+![Screenshot](overview.PNG)
 
 
