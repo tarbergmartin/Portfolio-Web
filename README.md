@@ -6,10 +6,10 @@ A digital portfolio using Blazor Server (C#) and a SharePoint communication site
 
 The solution consists of four different projects:
 
-• Portfolio.API – ASP.NET Core Web Application (Web API)
-• Portfolio.Components – Razor Class Library
-• Portfolio.Shared – Class Library (.NET Standard)
-• Portfolio.Web – Blazor App (Server)
+* Portfolio.API – ASP.NET Core Web Application (Web API)
+* Portfolio.Components – Razor Class Library
+* Portfolio.Shared – Class Library (.NET Standard)
+* Portfolio.Web – Blazor App (Server)
 
 Here is an overview of what the different project types are responsible for:
 
