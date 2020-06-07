@@ -6,7 +6,7 @@ A digital portfolio using Blazor Server (C#) and a SharePoint communication site
 
 Here is a sample from the mobile view:
 
-![](gifs/overview)
+![](gifs/preview-mobile)
 
 Here is a sample from the desktop view:
 
