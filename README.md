@@ -4,6 +4,8 @@
 
 A digital portfolio using ASP.NET Core Blazor (Server) (C#) and a SharePoint communication site as a Content Management System. This was my graduation project for the educational programme "Programutveckling .NET med SharePoint-inriktning" at Nackademin.
 
+Unfortuantely, because SharePoint Online needs the author's credentials it's not possible to run the application locally. However, feel free to have a look at the code.
+
 The solution consists of four different projects:
 
 * Portfolio.API – ASP.NET Core Web Application (Web API)
