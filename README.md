@@ -4,9 +4,9 @@
 
 A digital portfolio using Blazor Server (C#) and a SharePoint communication site as a Content Management System. This was my graduation project for the educational programme "Programutveckling .NET med SharePoint-inriktning" at Nackademin.
 
-Her is a sample from the mobile view:
+Here is a sample from the mobile view:
 
-![](gifs/preview-mobile.gif)
+![](gifs/preview-mobile.gif) ![](gifs/preview-mobile.gif)
 
 Here is a sample from the desktop view:
 
