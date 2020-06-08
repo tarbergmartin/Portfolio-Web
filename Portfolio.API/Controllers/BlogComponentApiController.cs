@@ -22,7 +22,7 @@ namespace Portfolio.API.Controllers
         }
 
         /// <summary>
-        /// Fetches all blog pages and returns a BlogModel used on the start page
+        /// Fetches all blog pages and returns the BlogModel used on the start page
         /// </summary>
         [HttpGet("{take}")]
         public async Task<IActionResult> Get(int take = 4)
@@ -47,6 +47,7 @@ namespace Portfolio.API.Controllers
 
                 catch (Exception e)
                 {
+                    // Log error?
                     return StatusCode(500, "Something went wrong while trying to fetch the homepage.");
                 }
             };

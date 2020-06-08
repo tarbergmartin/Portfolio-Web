@@ -32,6 +32,7 @@ namespace Portfolio.Web
             services.AddScoped<EmailService>();
             services.AddHttpClient<PortfolioApiClient>(client =>
             {
+                // Change url for production if the application ever is released
                 client.BaseAddress = new Uri(Environment.IsDevelopment() ? "https://localhost:44351/" : "https://minhemsida.com");
             });
         }

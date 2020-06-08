@@ -49,6 +49,7 @@ namespace Portfolio.API.Controllers
 
                 catch (Exception e)
                 {
+                    // Log error?
                     return StatusCode(500, "Something went wrong while trying to fetch the hero.");
                 }
             }

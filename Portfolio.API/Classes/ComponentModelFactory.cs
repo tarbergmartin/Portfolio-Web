@@ -124,7 +124,6 @@ namespace Portfolio.API.Classes
             model.BlogPosts = model.BlogPosts.OrderByDescending(b => b.PublishedDate)
                                              .Take(take)
                                              .ToList();
-
             return model;
         }
 

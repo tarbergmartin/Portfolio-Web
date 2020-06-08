@@ -36,6 +36,7 @@ namespace Portfolio.API.Classes
 
             catch (Exception e)
             {
+                // Log error
                 return false;
             }
 
